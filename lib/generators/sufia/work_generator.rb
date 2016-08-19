@@ -25,7 +25,7 @@ module Sufia
     def inject_sufia_work_behavior
       insert_into_file "app/models/#{name.underscore}.rb", after: 'include ::CurationConcerns::BasicMetadata' do
         "\n  include Sufia::WorkBehavior" \
-        "\n  self.human_readable_type = 'Work'"
+        "\n  self.human_readable_type = '#{name.split(/(?=[A-Z])/).join(' ')}'"
       end
     end
 
